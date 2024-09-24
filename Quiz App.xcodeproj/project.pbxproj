@@ -15,6 +15,7 @@
 		9F461A182CA2594D0081A070 /* Quiz_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A172CA2594D0081A070 /* Quiz_AppTests.swift */; };
 		9F461A222CA2594D0081A070 /* Quiz_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A212CA2594D0081A070 /* Quiz_AppUITests.swift */; };
 		9F461A242CA2594D0081A070 /* Quiz_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A232CA2594D0081A070 /* Quiz_AppUITestsLaunchTests.swift */; };
+		9F86CED52CA3841800D5312F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F86CED42CA3841800D5312F /* Question.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		9F461A1D2CA2594D0081A070 /* Quiz AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Quiz AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F461A212CA2594D0081A070 /* Quiz_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_AppUITests.swift; sourceTree = "<group>"; };
 		9F461A232CA2594D0081A070 /* Quiz_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9F86CED42CA3841800D5312F /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		9F461A032CA2594C0081A070 /* Quiz App */ = {
 			isa = PBXGroup;
 			children = (
+				9F86CED32CA3840F00D5312F /* Models */,
 				9F461A042CA2594C0081A070 /* Quiz_AppApp.swift */,
 				9F461A062CA2594C0081A070 /* ContentView.swift */,
 				9F461A082CA2594C0081A070 /* Item.swift */,
@@ -128,6 +131,14 @@
 				9F461A232CA2594D0081A070 /* Quiz_AppUITestsLaunchTests.swift */,
 			);
 			path = "Quiz AppUITests";
+			sourceTree = "<group>";
+		};
+		9F86CED32CA3840F00D5312F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9F86CED42CA3841800D5312F /* Question.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F461A072CA2594C0081A070 /* ContentView.swift in Sources */,
+				9F86CED52CA3841800D5312F /* Question.swift in Sources */,
 				9F461A092CA2594C0081A070 /* Item.swift in Sources */,
 				9F461A052CA2594C0081A070 /* Quiz_AppApp.swift in Sources */,
 			);
