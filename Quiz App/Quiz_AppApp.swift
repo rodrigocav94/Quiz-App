@@ -29,4 +29,14 @@ struct Quiz_AppApp: App {
         }
         .modelContainer(sharedModelContainer)
     }
+    
+    
+    func customizeStyle() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = .quizGreen
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.quizGreen.withAlphaComponent(0.2)
+    }
+    
+    init() {
+        customizeStyle()
+    }
 }
