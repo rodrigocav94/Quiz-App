@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct LargeButtonStyle: ButtonStyle {
+    var color: Color = .quizGreen
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(Font.custom("Kickers-Regular", size: 30))
             .foregroundStyle(.white)
             .frame(height: 65)
             .frame(maxWidth: .infinity)
-            .background(Color.quizOffBlack)
+            .background(color)
             .clipShape(.capsule)
-            .padding(.horizontal, 60)
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }

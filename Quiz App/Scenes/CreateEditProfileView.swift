@@ -8,8 +8,47 @@
 import SwiftUI
 
 struct CreateEditProfileView: View {
+    @State private var pfpIndex = 1
+    @State private var name = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            BackButton()
+                .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(spacing: 40) {
+                Text("Mostre quem você é!")
+                    .font(Font.custom("Kickers-Regular", size: 50))
+                HStack {
+                    Image(systemName: "arrowshape.backward.fill")
+                        .font(.largeTitle)
+                    
+                    Image("pfp\(pfpIndex)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 220)
+                    
+                    Image(systemName: "arrowshape.right.fill")
+                        .font(.largeTitle)
+                }
+                
+                VStack {
+                    TextField("Seu nome", text: $name)
+                        .font(Font.custom("Kickers-Regular", size: 40))
+                        .multilineTextAlignment(.center)
+                        .lineLimit(0)
+                        .frame(maxHeight: .infinity, alignment: .top)
+                    Button("Salvar") {}
+                        .buttonStyle(LargeButtonStyle(color: .quizPink))
+                }
+                .padding()
+                .background(.quizOffWhite)
+                .clipShape(RoundedRectangle(cornerRadius: 25))
+            }
+            .frame(maxHeight: .infinity, alignment: . top)
+            .padding(.horizontal, 40)
+        }
+        .background(.quizYellow)
+        .navigationBarBackButtonHidden()
     }
 }
 

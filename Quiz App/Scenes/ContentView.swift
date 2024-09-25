@@ -20,13 +20,14 @@ struct ContentView: View {
                 .padding(.horizontal, 60)
                 
                 TabView {
-                    ProfileSelection()
+                    ProfileSelection(name: "Corwin", pfpIndex: 2)
                     ProfileSelection()
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 
                 Button("Começar Quiz") {}
                     .buttonStyle(LargeButtonStyle())
+                    .padding(.horizontal, 60)
             }
             .foregroundStyle(.quizOffBlack)
             .multilineTextAlignment(.center)

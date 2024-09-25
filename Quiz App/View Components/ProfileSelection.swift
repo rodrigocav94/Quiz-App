@@ -12,19 +12,21 @@ struct ProfileSelection: View {
     var pfpIndex: Int?
     
     var body: some View {
-        NavigationLink(destination: EmptyView()) {
+        NavigationLink(destination: CreateEditProfileView()) {
             VStack {
                 Image("pfp\(pfpIndex ?? 0)")
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 220)
                 Text(name ?? "Criar")
-                    .font(Font.custom("Kickers-Regular", size: 47))
+                    .font(Font.custom("Kickers-Regular", size: 40))
+                    .lineLimit(2)
             }
             .padding(.horizontal, 60)
             .multilineTextAlignment(.center)
             .foregroundStyle(.quizOffBlack)
         }
+        .buttonStyle(.plain)
     }
 }
 
