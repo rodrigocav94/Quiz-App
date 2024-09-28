@@ -12,13 +12,18 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 15) {
-                Text("Ver ranking")
-                    .bold()
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 15)
-                    .overlay(Capsule().stroke(.quizGreen, lineWidth: 1))
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .padding(.horizontal)
+                NavigationLink {
+                    RankingView()
+                } label: {
+                    Text("Hall da Fama")
+                        .bold()
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 15)
+                        .overlay(Capsule().stroke(.quizGreen, lineWidth: 1))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.horizontal)
+                }
+
                 Group {
                     Text("Quem está por aqui?")
                         .font(Font.custom("Kickers-Regular", size: 55))
