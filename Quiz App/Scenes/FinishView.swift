@@ -52,14 +52,14 @@ struct FinishView: View {
                     }
                     
                     VStack {
-                        Image(systemName: "house.fill")
+                        Image(systemName: "arrow.clockwise")
                             .font(.title2)
                             .fontWeight(.black)
                             .frame(height: 60)
                             .frame(maxWidth: .infinity)
                             .background(.quizPink   )
                             .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                        Text("Início")
+                        Text("Reiniciar")
                             .foregroundStyle(.quizOffWhite)
                     }
                     
