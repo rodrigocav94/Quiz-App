@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreateEditProfileView: View {
-    @State private var pfpIndex = 1
+    @State private var pfpIndex = Int.random(in: 1...17)
     @State private var name = ""
     
     var body: some View {
@@ -19,16 +19,14 @@ struct CreateEditProfileView: View {
                 Text("Mostre quem você é!")
                     .font(Font.custom("Kickers-Regular", size: 50))
                 HStack {
-                    Image(systemName: "arrowshape.backward.fill")
-                        .font(.largeTitle)
+                    arrowButton(goesToTheLeft: true)
                     
                     Image("pfp\(pfpIndex)")
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: 220)
                     
-                    Image(systemName: "arrowshape.right.fill")
-                        .font(.largeTitle)
+                    arrowButton(goesToTheLeft: false)
                 }
                 
                 VStack {
@@ -37,7 +35,7 @@ struct CreateEditProfileView: View {
                         .multilineTextAlignment(.center)
                         .lineLimit(0)
                         .frame(maxHeight: .infinity, alignment: .top)
-                    Button("Salvar") {}
+                    Button("Guardar") {}
                         .buttonStyle(LargeButtonStyle(color: .quizPink))
                 }
                 .padding()
@@ -49,6 +47,28 @@ struct CreateEditProfileView: View {
         }
         .background(.quizYellow)
         .navigationBarBackButtonHidden()
+    }
+    
+    func arrowButton(goesToTheLeft: Bool) -> some View {
+        let shouldBeDisabled = pfpIndex == (goesToTheLeft ? 1 : 17)
+        
+        return Button {
+            if goesToTheLeft {
+                if pfpIndex > 1 {
+                    pfpIndex -= 1
+                }
+            } else {
+                if pfpIndex < 17 {
+                    pfpIndex += 1
+                }
+            }
+        } label: {
+            Image(systemName: goesToTheLeft ? "arrowshape.backward.fill" : "arrowshape.right.fill")
+                .font(.largeTitle)
+                .foregroundStyle(.quizOffBlack)
+        }
+        .opacity(shouldBeDisabled ? 0.5 : 1)
+        .disabled(shouldBeDisabled)
     }
 }
 
