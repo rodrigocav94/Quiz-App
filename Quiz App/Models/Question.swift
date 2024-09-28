@@ -7,10 +7,20 @@
 
 import Foundation
 
-struct Question: Codable {
+struct Question: Codable, Identifiable, Hashable {
     let id: String
     let statement: String
     let options: [String]
+}
+
+extension Question: Comparable {
+    static func < (lhs: Question, rhs: Question) -> Bool {
+        lhs.id < rhs.id
+    }
+    
+    static func == (lhs: Question, rhs: Question) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 struct Answer: Codable {

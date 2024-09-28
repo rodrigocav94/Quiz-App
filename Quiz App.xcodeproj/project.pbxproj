@@ -13,8 +13,10 @@
 		9F2FB6E32CA8847000A38809 /* SpinningLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6E22CA8847000A38809 /* SpinningLight.swift */; };
 		9F2FB6E52CA88F3D00A38809 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6E42CA88F3D00A38809 /* ConfettiView.swift */; };
 		9F2FB6E72CA890D300A38809 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6E62CA890D300A38809 /* RankingView.swift */; };
+		9F2FB6EA2CA8A2D800A38809 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6E92CA8A2D800A38809 /* HomeViewModel.swift */; };
+		9F2FB6ED2CA8AA9E00A38809 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6EC2CA8AA9E00A38809 /* NetworkService.swift */; };
 		9F461A052CA2594C0081A070 /* Quiz_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A042CA2594C0081A070 /* Quiz_AppApp.swift */; };
-		9F461A072CA2594C0081A070 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A062CA2594C0081A070 /* ContentView.swift */; };
+		9F461A072CA2594C0081A070 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A062CA2594C0081A070 /* HomeView.swift */; };
 		9F461A092CA2594C0081A070 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A082CA2594C0081A070 /* Item.swift */; };
 		9F461A0B2CA2594D0081A070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F461A0A2CA2594D0081A070 /* Assets.xcassets */; };
 		9F461A0E2CA2594D0081A070 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F461A0D2CA2594D0081A070 /* Preview Assets.xcassets */; };
@@ -53,9 +55,11 @@
 		9F2FB6E22CA8847000A38809 /* SpinningLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningLight.swift; sourceTree = "<group>"; };
 		9F2FB6E42CA88F3D00A38809 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		9F2FB6E62CA890D300A38809 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		9F2FB6E92CA8A2D800A38809 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		9F2FB6EC2CA8AA9E00A38809 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		9F461A012CA2594C0081A070 /* Quiz App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F461A042CA2594C0081A070 /* Quiz_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_AppApp.swift; sourceTree = "<group>"; };
-		9F461A062CA2594C0081A070 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9F461A062CA2594C0081A070 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9F461A082CA2594C0081A070 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		9F461A0A2CA2594D0081A070 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F461A0D2CA2594D0081A070 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -98,6 +102,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F2FB6E82CA8A2CB00A38809 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9F461A062CA2594C0081A070 /* HomeView.swift */,
+				9F2FB6E92CA8A2D800A38809 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9F2FB6EB2CA8AA8B00A38809 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9F2FB6EC2CA8AA9E00A38809 /* NetworkService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		9F4619F82CA2594B0081A070 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +142,7 @@
 		9F461A032CA2594C0081A070 /* Quiz App */ = {
 			isa = PBXGroup;
 			children = (
+				9F2FB6EB2CA8AA8B00A38809 /* Service */,
 				9F86CED92CA3895900D5312F /* Quiz-App-Info.plist */,
 				9F86CEDD2CA39A3200D5312F /* View Modifiers */,
 				9F86CEDC2CA3969600D5312F /* View Components */,
@@ -199,7 +221,7 @@
 		9F86CEE02CA39C1F00D5312F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				9F461A062CA2594C0081A070 /* ContentView.swift */,
+				9F2FB6E82CA8A2CB00A38809 /* Home */,
 				9F86CEE12CA39C4700D5312F /* CreateEditProfileView.swift */,
 				9F2FB6DC2CA855B900A38809 /* QuizView.swift */,
 				9F2FB6DE2CA8631700A38809 /* FinishView.swift */,
@@ -341,7 +363,7 @@
 			files = (
 				9F86CEE42CA39C5D00D5312F /* BackButton.swift in Sources */,
 				9F2FB6DF2CA8631700A38809 /* FinishView.swift in Sources */,
-				9F461A072CA2594C0081A070 /* ContentView.swift in Sources */,
+				9F461A072CA2594C0081A070 /* HomeView.swift in Sources */,
 				9F2FB6DD2CA855BA00A38809 /* QuizView.swift in Sources */,
 				9F2FB6E32CA8847000A38809 /* SpinningLight.swift in Sources */,
 				9F86CEDF2CA39A4A00D5312F /* LargeButtonStyle.swift in Sources */,
@@ -349,9 +371,11 @@
 				9F2FB6E72CA890D300A38809 /* RankingView.swift in Sources */,
 				9F86CED52CA3841800D5312F /* Question.swift in Sources */,
 				9F461A092CA2594C0081A070 /* Item.swift in Sources */,
+				9F2FB6ED2CA8AA9E00A38809 /* NetworkService.swift in Sources */,
 				9F461A052CA2594C0081A070 /* Quiz_AppApp.swift in Sources */,
 				9F2FB6E12CA87EF300A38809 /* CircleBarButtonStyle.swift in Sources */,
 				9F2FB6E52CA88F3D00A38809 /* ConfettiView.swift in Sources */,
+				9F2FB6EA2CA8A2D800A38809 /* HomeViewModel.swift in Sources */,
 				9F86CEDB2CA3969100D5312F /* ProfileSelection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
