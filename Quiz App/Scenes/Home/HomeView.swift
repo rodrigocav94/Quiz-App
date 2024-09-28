@@ -7,12 +7,22 @@
 
 import SwiftUI
 import SwiftData
+import MSwiftUINavigator
 
-struct HomeView: View {
-    @ObservedObject var cachedNetworkResults = NetworkService.shared
+struct HomeView: View, Navigator {
+    @StateObject var cachedNetworkResults = NetworkService.shared
     @StateObject var vm = HomeViewModel()
     
     var body: some View {
+        NavigationStack {
+            contentBody
+        }
+        .toolbar(.hidden, for: .navigationBar)
+        .onAppear {
+            cachedNetworkResults.fetchQuestions()
+        }
+    }
+    var contentBody: some View {
         VStack(spacing: 15) {
             NavigationLink {
                 RankingView()

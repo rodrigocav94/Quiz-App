@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MSwiftUINavigator
 
 struct FinishView: View {
     @State private var displayConfetti = true
@@ -13,7 +14,7 @@ struct FinishView: View {
     var body: some View {
         VStack {
             Button {
-
+                NavigationManager.shared.popToRootView()
             } label: {
                 Image(systemName: "xmark")
             }
@@ -84,6 +85,7 @@ struct FinishView: View {
                 .ignoresSafeArea(.all)
         )
         .displayConfetti(isActive: $displayConfetti)
+        .navigationBarBackButtonHidden()
     }
 }
 

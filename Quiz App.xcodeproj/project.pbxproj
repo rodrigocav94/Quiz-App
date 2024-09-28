@@ -15,6 +15,8 @@
 		9F2FB6E72CA890D300A38809 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6E62CA890D300A38809 /* RankingView.swift */; };
 		9F2FB6EA2CA8A2D800A38809 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6E92CA8A2D800A38809 /* HomeViewModel.swift */; };
 		9F2FB6ED2CA8AA9E00A38809 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6EC2CA8AA9E00A38809 /* NetworkService.swift */; };
+		9F2FB6F02CA8BF8300A38809 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6EF2CA8BF8300A38809 /* QuizViewModel.swift */; };
+		9F2FB6F42CA8C4AA00A38809 /* MSwiftUINavigator in Frameworks */ = {isa = PBXBuildFile; productRef = 9F2FB6F32CA8C4AA00A38809 /* MSwiftUINavigator */; };
 		9F461A052CA2594C0081A070 /* Quiz_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A042CA2594C0081A070 /* Quiz_AppApp.swift */; };
 		9F461A072CA2594C0081A070 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A062CA2594C0081A070 /* HomeView.swift */; };
 		9F461A092CA2594C0081A070 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A082CA2594C0081A070 /* Item.swift */; };
@@ -57,6 +59,7 @@
 		9F2FB6E62CA890D300A38809 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		9F2FB6E92CA8A2D800A38809 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9F2FB6EC2CA8AA9E00A38809 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		9F2FB6EF2CA8BF8300A38809 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		9F461A012CA2594C0081A070 /* Quiz App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F461A042CA2594C0081A070 /* Quiz_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_AppApp.swift; sourceTree = "<group>"; };
 		9F461A062CA2594C0081A070 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F2FB6F42CA8C4AA00A38809 /* MSwiftUINavigator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +121,15 @@
 				9F2FB6EC2CA8AA9E00A38809 /* NetworkService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		9F2FB6EE2CA8BF7300A38809 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				9F2FB6DC2CA855B900A38809 /* QuizView.swift */,
+				9F2FB6EF2CA8BF8300A38809 /* QuizViewModel.swift */,
+			);
+			path = Quiz;
 			sourceTree = "<group>";
 		};
 		9F4619F82CA2594B0081A070 = {
@@ -221,9 +234,9 @@
 		9F86CEE02CA39C1F00D5312F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9F2FB6EE2CA8BF7300A38809 /* Quiz */,
 				9F2FB6E82CA8A2CB00A38809 /* Home */,
 				9F86CEE12CA39C4700D5312F /* CreateEditProfileView.swift */,
-				9F2FB6DC2CA855B900A38809 /* QuizView.swift */,
 				9F2FB6DE2CA8631700A38809 /* FinishView.swift */,
 				9F2FB6E62CA890D300A38809 /* RankingView.swift */,
 			);
@@ -246,6 +259,9 @@
 			dependencies = (
 			);
 			name = "Quiz App";
+			packageProductDependencies = (
+				9F2FB6F32CA8C4AA00A38809 /* MSwiftUINavigator */,
+			);
 			productName = "Quiz App";
 			productReference = 9F461A012CA2594C0081A070 /* Quiz App.app */;
 			productType = "com.apple.product-type.application";
@@ -318,6 +334,9 @@
 				Base,
 			);
 			mainGroup = 9F4619F82CA2594B0081A070;
+			packageReferences = (
+				9F2FB6F22CA8C4AA00A38809 /* XCRemoteSwiftPackageReference "MSwiftUINavigator" */,
+			);
 			productRefGroup = 9F461A022CA2594C0081A070 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -375,6 +394,7 @@
 				9F461A052CA2594C0081A070 /* Quiz_AppApp.swift in Sources */,
 				9F2FB6E12CA87EF300A38809 /* CircleBarButtonStyle.swift in Sources */,
 				9F2FB6E52CA88F3D00A38809 /* ConfettiView.swift in Sources */,
+				9F2FB6F02CA8BF8300A38809 /* QuizViewModel.swift in Sources */,
 				9F2FB6EA2CA8A2D800A38809 /* HomeViewModel.swift in Sources */,
 				9F86CEDB2CA3969100D5312F /* ProfileSelection.swift in Sources */,
 			);
@@ -708,6 +728,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F2FB6F22CA8C4AA00A38809 /* XCRemoteSwiftPackageReference "MSwiftUINavigator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MahmoudAbdelshafi/MSwiftUINavigator.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F2FB6F32CA8C4AA00A38809 /* MSwiftUINavigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F2FB6F22CA8C4AA00A38809 /* XCRemoteSwiftPackageReference "MSwiftUINavigator" */;
+			productName = MSwiftUINavigator;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9F4619F92CA2594B0081A070 /* Project object */;
 }

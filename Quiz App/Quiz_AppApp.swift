@@ -10,7 +10,6 @@ import SwiftData
 
 @main
 struct Quiz_AppApp: App {
-    @StateObject var cachedNetworkResults = NetworkService.shared
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -26,13 +25,7 @@ struct Quiz_AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                HomeView()
-            }
-            .toolbar(.hidden, for: .navigationBar)
-            .onAppear {
-                cachedNetworkResults.fetchQuestions()
-            }
+            HomeView()
         }
         .modelContainer(sharedModelContainer)
     }
