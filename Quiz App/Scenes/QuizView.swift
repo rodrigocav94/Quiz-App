@@ -54,6 +54,7 @@ struct QuizView: View {
                 Text(Question.mock.statement)
                     .font(Font.custom("Kickers-Regular", size: 50))
                     .minimumScaleFactor(0.1)
+                    .layoutPriority(1)
                 
                 VStack(spacing: 10) {
                     ForEach(Array(Question.mock.options.enumerated()), id: \.element) { (index, element) in
@@ -70,6 +71,7 @@ struct QuizView: View {
                 }
             }
             .padding(.bottom)
+            .frame(maxHeight: .infinity, alignment: .bottom)
             .background(alignment: .topTrailing) {
                 Image("quiz-background")
                     .renderingMode(.template)

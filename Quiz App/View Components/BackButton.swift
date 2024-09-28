@@ -14,15 +14,14 @@ struct BackButton: View {
             dismiss()
         } label: {
             Image(systemName: "chevron.left")
-                .font(.title.weight(.bold))
-                .padding()
-                .background(.white)
-                .clipShape(Circle())
-                .foregroundStyle(.quizOffBlack)
         }
+        .buttonStyle(CircleBarButtonStyle())
     }
 }
 
 #Preview {
     BackButton()
+        .background {
+            Color.quizOffBlack
+        }
 }
