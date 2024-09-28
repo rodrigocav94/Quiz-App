@@ -35,7 +35,7 @@ struct FinishView: View {
                         .font(Font.custom("Kickers-Regular", size: 60))
                         .minimumScaleFactor(0.1)
                     
-                    Text("Esperamos que você tenha curtido o resultado e aprendido algo novo!")
+                    Text("Esperamos que tenha curtido o resultado e aprendido algo novo!")
                 }
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.quizOffWhite)
