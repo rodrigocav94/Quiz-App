@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LargeButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled: Bool
     var color: Color = .quizOffBlack
     
     func makeBody(configuration: Configuration) -> some View {
@@ -19,6 +20,8 @@ struct LargeButtonStyle: ButtonStyle {
             .background(color)
             .clipShape(.capsule)
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .opacity(isEnabled ? 1 : 0.5)
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            .animation(.default, value: isEnabled)
     }
 }

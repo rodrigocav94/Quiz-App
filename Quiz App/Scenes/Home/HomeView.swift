@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
+    @ObservedObject var cachedNetworkResults = NetworkService.shared
+    @StateObject var vm = HomeViewModel()
+    
     var body: some View {
         VStack(spacing: 15) {
             NavigationLink {
@@ -40,11 +43,19 @@ struct HomeView: View {
             NavigationLink {
                 QuizView()
             } label: {
-                Text("Começar Quiz")
+                HStack(spacing: 10) {
+                    if vm.isLoading {
+                        ProgressView()
+                            .tint(.white)
+                            .scaleEffect(x: 1.25, y: 1.25)
+                    }
+                    Text(vm.isLoading ? "Carregando..." : "Começar Quiz")
+                }
             }
             .buttonStyle(LargeButtonStyle())
             .padding(.horizontal, 60)
             .padding(.bottom)
+            .disabled(vm.isLoading)
             
         }
         .foregroundStyle(.quizOffBlack)
@@ -59,6 +70,8 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
-        .modelContainer(for: Item.self, inMemory: true)
+    NavigationStack {
+        HomeView()
+            .modelContainer(for: Item.self, inMemory: true)
+    }
 }
