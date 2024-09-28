@@ -9,10 +9,20 @@ import Foundation
 import Combine
 
 class HomeViewModel: ObservableObject {
-    var isLoading: Bool {
+    @Published var displayingAlert = false
+    
+    var didNotLoadYet: Bool {
         NetworkService.shared.questions.isEmpty
     }
-    var hasError: String? {
-        return NetworkService.shared.errorMessage
+    var hasError: Bool {
+        return NetworkService.shared.anErrorOccurred
+    }
+    
+    var cantStartQuiz: Bool {
+        didNotLoadYet && !hasError
+    }
+    
+    func tryLoadingAgain() {
+        NetworkService.shared.fetchQuestions()
     }
 }

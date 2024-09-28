@@ -11,13 +11,13 @@ import Combine
 class NetworkService: ObservableObject {
     // MARK: - Shared instance to cache results.
     @Published var questions = [Question]()
-    @Published var errorMessage: String?
+    @Published var anErrorOccurred = false
     
     private var cancellables = Set<AnyCancellable>()
     
     func fetchQuestions() {
         // Reset any previous error and show loading state
-        errorMessage = nil
+        anErrorOccurred = false
         
         NetworkService.fetchTenQuestions()
             .receive(on: DispatchQueue.main)
@@ -27,7 +27,8 @@ class NetworkService: ObservableObject {
                 case .finished:
                     print("Finished fetching 10 questions.")
                 case .failure(let error):
-                    self.errorMessage = "Error fetching questions: \(error.localizedDescription)"
+                    print("Error fetching questions: \(error.localizedDescription)")
+                    anErrorOccurred = true
                 }
             }, receiveValue: { [weak self] questionResponse in
                 self?.questions = questionResponse

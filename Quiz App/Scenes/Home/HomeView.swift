@@ -40,22 +40,33 @@ struct HomeView: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
             
-            NavigationLink {
-                QuizView()
-            } label: {
-                HStack(spacing: 10) {
-                    if vm.isLoading {
-                        ProgressView()
-                            .tint(.white)
-                            .scaleEffect(x: 1.25, y: 1.25)
+            Group {
+                if (vm.hasError) && vm.didNotLoadYet {
+                    Button("Tentar Novamente") {
+                        vm.tryLoadingAgain()
                     }
-                    Text(vm.isLoading ? "Carregando..." : "Começar Quiz")
+                    .onAppear {
+                        vm.displayingAlert = true
+                    }
+                } else {
+                    NavigationLink {
+                        QuizView()
+                    } label: {
+                        HStack(spacing: 10) {
+                            if vm.didNotLoadYet {
+                                ProgressView()
+                                    .tint(.white)
+                                    .scaleEffect(x: 1.25, y: 1.25)
+                            }
+                            Text(vm.didNotLoadYet ? "Carregando..." : "Começar Quiz")
+                        }
+                    }
                 }
             }
             .buttonStyle(LargeButtonStyle())
             .padding(.horizontal, 60)
             .padding(.bottom)
-            .disabled(vm.isLoading)
+            .disabled(vm.cantStartQuiz)
             
         }
         .foregroundStyle(.quizOffBlack)
@@ -66,6 +77,9 @@ struct HomeView: View {
             Color.quizOffWhite
                 .ignoresSafeArea(edges: .all)
         )
+        .alert(isPresented: $vm.displayingAlert) {
+            Alert(title: Text("Ops! Não conseguimos sincronizar as perguntas."), message: Text("Tente novamente em alguns instantes."))
+        }
     }
 }
 
