@@ -22,6 +22,9 @@ struct FinishView: View {
             Image("finish-background")
                 .resizable()
                 .scaledToFit()
+                .background {
+                    SpinningLight()
+                }
             
             VStack(spacing: 35) {
                 VStack(spacing: 15) {

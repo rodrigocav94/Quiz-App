@@ -29,6 +29,10 @@ struct CreateEditProfileView: View {
                     
                     arrowButton(goesToTheLeft: false)
                 }
+                .background(
+                    SpinningLight().scaleEffect(x: 2, y: 2)
+                        .allowsHitTesting(false)
+                )
                 
                 VStack {
                     TextField("Seu nome", text: $name)
@@ -43,9 +47,9 @@ struct CreateEditProfileView: View {
                 .background(.quizOffWhite)
                 .clipShape(RoundedRectangle(cornerRadius: 25))
             }
-            .frame(maxHeight: .infinity, alignment: . top)
             .padding(.horizontal, 40)
         }
+        .clipped()
         .background(.quizYellow)
         .navigationBarBackButtonHidden()
     }
