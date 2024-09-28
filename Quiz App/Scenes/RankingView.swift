@@ -24,6 +24,7 @@ struct RankingView: View {
                     Text("Hall da Fama")
                         .font(Font.custom("Kickers-Regular", size: 55))
                     Text("Descubra quem brilhou no quiz!")
+                        .padding(.bottom, 20)
                     
                     HStack(spacing: 20) {
                         Image("pfp3")
@@ -42,10 +43,24 @@ struct RankingView: View {
                 }
                 .padding([.horizontal, .bottom])
             }
+            .mask(gradientMask)
         }
         .foregroundStyle(.quizOffWhite)
         .background(.quizGreen)
         .navigationBarBackButtonHidden()
+    }
+    
+    var gradientMask: some View {
+        LinearGradient(
+            stops: [
+                .init(color: .clear, location: 0),
+                .init(color: .black, location: 0.04),
+                .init(color: .black, location: 0.96),
+                .init(color: .clear, location: 1)
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+        )
     }
 }
 
