@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LargeButtonStyle: ButtonStyle {
-    var color: Color = .quizGreen
+    var color: Color = .quizOffBlack
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

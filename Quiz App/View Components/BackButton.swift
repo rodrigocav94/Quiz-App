@@ -15,12 +15,12 @@ struct BackButton: View {
         } label: {
             Image(systemName: "chevron.left")
                 .font(.title.weight(.bold))
-                .padding(20)
+                .padding()
                 .background(.white)
                 .clipShape(Circle())
                 .foregroundStyle(.quizOffBlack)
         }
-        .padding(15)
+        .padding()
     }
 }
 
