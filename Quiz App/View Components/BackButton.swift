@@ -20,7 +20,6 @@ struct BackButton: View {
                 .clipShape(Circle())
                 .foregroundStyle(.quizOffBlack)
         }
-        .padding()
     }
 }
 

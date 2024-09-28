@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F2FB6DD2CA855BA00A38809 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6DC2CA855B900A38809 /* QuizView.swift */; };
 		9F461A052CA2594C0081A070 /* Quiz_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A042CA2594C0081A070 /* Quiz_AppApp.swift */; };
 		9F461A072CA2594C0081A070 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A062CA2594C0081A070 /* ContentView.swift */; };
 		9F461A092CA2594C0081A070 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F461A082CA2594C0081A070 /* Item.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F2FB6DC2CA855B900A38809 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		9F461A012CA2594C0081A070 /* Quiz App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F461A042CA2594C0081A070 /* Quiz_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_AppApp.swift; sourceTree = "<group>"; };
 		9F461A062CA2594C0081A070 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				9F461A062CA2594C0081A070 /* ContentView.swift */,
 				9F86CEE12CA39C4700D5312F /* CreateEditProfileView.swift */,
+				9F2FB6DC2CA855B900A38809 /* QuizView.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			files = (
 				9F86CEE42CA39C5D00D5312F /* BackButton.swift in Sources */,
 				9F461A072CA2594C0081A070 /* ContentView.swift in Sources */,
+				9F2FB6DD2CA855BA00A38809 /* QuizView.swift in Sources */,
 				9F86CEDF2CA39A4A00D5312F /* LargeButtonStyle.swift in Sources */,
 				9F86CEE22CA39C4700D5312F /* CreateEditProfileView.swift in Sources */,
 				9F86CED52CA3841800D5312F /* Question.swift in Sources */,

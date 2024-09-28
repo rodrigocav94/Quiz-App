@@ -33,10 +33,15 @@ struct ContentView: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 
-                Button("Começar Quiz") {}
-                    .buttonStyle(LargeButtonStyle())
-                    .padding(.horizontal, 60)
-                    .padding(.bottom)
+                NavigationLink {
+                    QuizView()
+                } label: {
+                    Text("Começar Quiz")
+                }
+                .buttonStyle(LargeButtonStyle())
+                .padding(.horizontal, 60)
+                .padding(.bottom)
+                
             }
             .foregroundStyle(.quizOffBlack)
             .multilineTextAlignment(.center)

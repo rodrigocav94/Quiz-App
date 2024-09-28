@@ -15,6 +15,7 @@ struct CreateEditProfileView: View {
         VStack {
             BackButton()
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
             VStack(spacing: 40) {
                 Text("Mostre quem você é!")
                     .font(Font.custom("Kickers-Regular", size: 50))
