@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FinishView: View {
+    @State private var displayConfetti = true
+    
     var body: some View {
         VStack {
             Button {
@@ -81,6 +83,7 @@ struct FinishView: View {
             Color.quizGreen
                 .ignoresSafeArea(.all)
         )
+        .displayConfetti(isActive: $displayConfetti)
     }
 }
 
