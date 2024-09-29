@@ -46,10 +46,6 @@ struct CreateEditProfileView: View {
     }
 }
 
-#Preview {
-    CreateEditProfileView(homeVM: HomeViewModel())
-}
-
 // MARK: - Header
 extension CreateEditProfileView {
     var Header: some View {
@@ -137,4 +133,8 @@ extension CreateEditProfileView {
                 }
             }
     }
+}
+
+#Preview {
+    CreateEditProfileView(homeVM: HomeViewModel())
 }
