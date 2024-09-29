@@ -31,7 +31,7 @@ struct QuizView: View {
             HStack(spacing: 20) {
                 HStack(spacing: 3) {
                     Image(systemName: "checkmark.seal.fill")
-                    Text("3")
+                    Text("\(vm.score)")
                 }
                 .bold()
                 .padding(.horizontal, 10)
@@ -49,6 +49,7 @@ struct QuizView: View {
                             .foregroundStyle(step > vm.questionIndex ? .quizOffWhite.opacity(0.5) : .quizGreen)
                     }
                 }
+                .animation(.default, value: vm.questionIndex)
             }
             
             VStack(alignment: .leading, spacing: 40) {
@@ -62,12 +63,12 @@ struct QuizView: View {
                             .font(Font.custom("Kickers-Regular", size: 25))
                             .multilineTextAlignment(.center)
                             .minimumScaleFactor(0.6)
-                            .foregroundStyle(index == 0 ? .quizOffWhite : .quizOffBlack)
+                            .foregroundStyle(getOptionFontColor(element))
                             .frame(maxWidth: .infinity)
                             .padding( 15)
                             .background {
                                 Capsule()
-                                    .fill(index == 0 ? .quizGreen : .quizOffWhite)
+                                    .fill(getOptionBackgroundColor(element))
                             }
                             .onTapGesture {
                                 vm.answer(element)
@@ -96,6 +97,28 @@ struct QuizView: View {
         .frame(maxHeight: .infinity, alignment: .top)
         .background(.quizPink)
         .navigationBarBackButtonHidden()
+        .alert(isPresented: $vm.displayingAlert) {
+            Alert(
+                title: Text("Algo deu errado ao enviar sua resposta."),
+                message: Text("Tente de novo!")
+            )
+        }
+    }
+    
+    func getOptionBackgroundColor(_ answer: String) -> Color {
+        guard let selectedOption = vm.selectedOption, let isCorrect = vm.didAnswerCorrectly else {
+            return .quizOffWhite
+        }
+        
+        if answer == selectedOption {
+            return isCorrect ? .quizGreen : .quizOffBlack
+        }
+        
+        return .quizOffWhite
+    }
+    
+    func getOptionFontColor(_ answer: String) -> Color {
+        return answer == vm.selectedOption && vm.didAnswerCorrectly != nil ? .white : .quizOffBlack
     }
 }
 
