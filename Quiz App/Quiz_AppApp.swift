@@ -13,6 +13,7 @@ struct Quiz_AppApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .addKeyboardVisibilityToEnvironment()
         }
         .modelContainer(for: Profile.self)
     }

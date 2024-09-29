@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CreateEditProfileView: View {
+    @Environment(\.keyboardShowing) var keyboardShowing
+    @FocusState private var textFieldIsFocused: Bool
     @ObservedObject var homeVM: HomeViewModel
     @StateObject private var vm = CreateEditProfileViewModel()
     @Environment(\.modelContext) var modelContext
@@ -16,23 +18,8 @@ struct CreateEditProfileView: View {
     private let minIconIndex = 1
     
     var body: some View {
-        VStack {
-            BackButton()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-                .overlay(alignment: .trailing) {
-                    if let profile {
-                        Button{
-                            vm.onDelete(context: modelContext, profile: profile, homeVM: homeVM)
-                        } label: {
-                            Text("Remover")
-                                .capsuleViewStyle(fontColor: .quizOffBlack, borderColor: .red)
-                        }
-                        .padding(.trailing)
-                    }
-                }
-            
-            VStack(spacing: 0) {
+        VStack(spacing: 0) {
+            if !keyboardShowing {
                 Text("Mostre quem você é!")
                     .font(Font.custom("Kickers-Regular", size: 50))
                     .multilineTextAlignment(.center)
@@ -51,25 +38,49 @@ struct CreateEditProfileView: View {
                         .allowsHitTesting(false)
                 )
                 .frame(maxHeight: .infinity)
+            }
+            
+            VStack {
+                TextField("Seu Nome", text: $vm.name)
+                    .font(Font.custom("Kickers-Regular", size: 40))
+                    .multilineTextAlignment(.center)
+                    .lineLimit(0)
+                    .focused($textFieldIsFocused)
                 
-                VStack {
-                    TextField("Seu nome", text: $vm.name)
-                        .font(Font.custom("Kickers-Regular", size: 40))
-                        .multilineTextAlignment(.center)
-                        .lineLimit(0)
-                    Button("Guardar") {
+                Button(keyboardShowing ? "Voltar" : "Guardar") {
+                    if keyboardShowing {
+                        textFieldIsFocused = false
+                    } else {
                         vm.onSave(context: modelContext, profile: profile)
                     }
-                    .buttonStyle(LargeButtonStyle(color: .quizGreen))
                 }
-                .padding()
-                .background(.quizOffWhite)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
+                .buttonStyle(LargeButtonStyle(color: .quizGreen))
             }
-            .padding(.horizontal, 40)
-            .padding(.bottom)
+            .padding()
+            .background(.quizOffWhite)
+            .clipShape(RoundedRectangle(cornerRadius: 25))
         }
+        .padding(.horizontal, 40)
+        .padding(.bottom)
+        .animation(.default, value: keyboardShowing)
+        .frame(maxHeight: .infinity)
         .background(.quizYellow)
+        .safeAreaInset(edge: .top) {
+            BackButton()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .overlay(alignment: .trailing) {
+                    if let profile {
+                        Button{
+                            vm.onDelete(context: modelContext, profile: profile, homeVM: homeVM)
+                        } label: {
+                            Text("Remover")
+                                .capsuleViewStyle(fontColor: .quizOffBlack, borderColor: .red)
+                        }
+                        .padding(.trailing)
+                    }
+                }
+        }
         .navigationBarBackButtonHidden()
         .onAppear {
             vm.updateInfo(profile: profile)
