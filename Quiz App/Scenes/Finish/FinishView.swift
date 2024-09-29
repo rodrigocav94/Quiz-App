@@ -9,6 +9,7 @@ import SwiftUI
 import MSwiftUINavigator
 
 struct FinishView: View {
+    @ObservedObject var vm: QuizViewModel
     @State private var displayConfetti = true
     
     var body: some View {
@@ -41,39 +42,17 @@ struct FinishView: View {
                 .foregroundStyle(.quizOffWhite)
                 
                 HStack {
-                    VStack {
-                        Text("9")
-                            .font(Font.custom("Kickers-Regular", size: 30))
-                            .frame(height: 60)
-                            .frame(maxWidth: .infinity)
-                            .background(.quizOffWhite)
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                        Text("Acertos")
-                            .foregroundStyle(.quizOffWhite)
+                    bottomButtonLabel(text: "\(vm.score)", systemIcon: "", title: "Acertos", color: .quizOffWhite)
+                    
+                    Button {
+                        vm.restartQuiz()
+                        NavigationManager.shared.popView()
+                    } label: {
+                        bottomButtonLabel(systemIcon: "arrow.clockwise", title: "Reiniciar", color: .quizPink)
                     }
                     
-                    VStack {
-                        Image(systemName: "arrow.clockwise")
-                            .font(.title2)
-                            .fontWeight(.black)
-                            .frame(height: 60)
-                            .frame(maxWidth: .infinity)
-                            .background(.quizPink   )
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                        Text("Reiniciar")
-                            .foregroundStyle(.quizOffWhite)
-                    }
-                    
-                    VStack {
-                        Image(systemName: "paperplane.fill")
-                            .font(.title2)
-                            .fontWeight(.black)
-                            .frame(height: 60)
-                            .frame(maxWidth: .infinity)
-                            .background(.quizYellow)
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                        Text("Compartilhar")
-                            .foregroundStyle(.quizOffWhite)
+                    ShareLink(item: "Consegui acertar \(vm.score) perguntas no Quiz App! E você, quantas consegue?") {
+                        bottomButtonLabel(systemIcon: "paperplane.fill", title: "Compartilhar", color: .quizYellow)
                     }
                 }
             }
@@ -87,8 +66,30 @@ struct FinishView: View {
         .displayConfetti(isActive: $displayConfetti)
         .navigationBarBackButtonHidden()
     }
+    
+    func bottomButtonLabel(text: String? = nil, systemIcon: String, title: String, color: Color) -> some View {
+        VStack {
+            Group {
+                if let text {
+                    Text(text)
+                        .font(Font.custom("Kickers-Regular", size: 30))
+                } else {
+                    Image(systemName: systemIcon)
+                        .font(.title2)
+                        .fontWeight(.black)
+                }
+            }
+                .frame(height: 60)
+                .frame(maxWidth: .infinity)
+                .background(color)
+                .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                .foregroundStyle(.quizOffBlack)
+            Text(title)
+                .foregroundStyle(.quizOffWhite)
+        }
+    }
 }
 
 #Preview {
-    FinishView()
+    FinishView(vm: QuizViewModel())
 }

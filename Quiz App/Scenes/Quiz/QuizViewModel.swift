@@ -55,9 +55,23 @@ class QuizViewModel: ObservableObject {
                 didAnswerCorrectly = nil
             } else {
                 NavigationManager.shared.pushView {
-                    FinishView()
+                    FinishView(vm: self)
                 }
             }
+        }
+    }
+    
+    func restartQuiz() {
+        score = 0
+        selectedOption = nil
+        didAnswerCorrectly = nil
+        questionIndex = 0
+        questions = NetworkService.shared.questions.isEmpty ? [.mock] : NetworkService.shared.questions
+    }
+    
+    func discardQuestions() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            NetworkService.shared.fetchQuestions()
         }
     }
 }

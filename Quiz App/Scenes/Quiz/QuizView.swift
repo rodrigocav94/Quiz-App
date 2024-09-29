@@ -103,6 +103,9 @@ struct QuizView: View {
                 message: Text("Tente de novo!")
             )
         }
+        .onAppear {
+            vm.discardQuestions()
+        }
     }
     
     func getOptionBackgroundColor(_ answer: String) -> Color {
