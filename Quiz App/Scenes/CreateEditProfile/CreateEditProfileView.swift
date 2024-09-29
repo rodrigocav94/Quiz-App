@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreateEditProfileView: View {
+    @ObservedObject var homeVM: HomeViewModel
     @StateObject private var vm = CreateEditProfileViewModel()
     @Environment(\.modelContext) var modelContext
     var profile: Profile?
@@ -50,7 +51,7 @@ struct CreateEditProfileView: View {
                     
                     if let profile {
                         Button("Remover") {
-                            vm.onDelete(context: modelContext, profile: profile)
+                            vm.onDelete(context: modelContext, profile: profile, homeVM: homeVM)
                         }
                         .buttonStyle(LargeButtonStyle(color: .quizPink))
                     }
@@ -66,6 +67,12 @@ struct CreateEditProfileView: View {
         .navigationBarBackButtonHidden()
         .onAppear {
             vm.updateInfo(profile: profile)
+        }
+        .alert(isPresented: $vm.displayingAlert) {
+            Alert(
+                title: Text("Ops! Não conseguimos salvar suas informações."),
+                message: Text("Por favor, insira um nome para continuar.")
+            )
         }
     }
     
@@ -85,5 +92,5 @@ struct CreateEditProfileView: View {
 }
 
 #Preview {
-    CreateEditProfileView()
+    CreateEditProfileView(homeVM: HomeViewModel())
 }

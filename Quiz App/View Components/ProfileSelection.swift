@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ProfileSelection: View {
+    var homeVM: HomeViewModel
     var profile: Profile?
     
     var body: some View {
-        NavigationLink(destination: CreateEditProfileView(profile: profile)) {
+        NavigationLink(destination: CreateEditProfileView(homeVM: homeVM, profile: profile)) {
             VStack {
                 Image("pfp\(profile?.icon ?? 0)")
                     .resizable()
@@ -31,6 +32,6 @@ struct ProfileSelection: View {
 
 #Preview {
     NavigationStack {
-        ProfileSelection()
+        ProfileSelection(homeVM: HomeViewModel())
     }
 }

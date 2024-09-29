@@ -10,6 +10,7 @@ import SwiftData
 import MSwiftUINavigator
 
 class CreateEditProfileViewModel: ObservableObject {
+    @Published var displayingAlert = false
     @Published var name = ""
     @Published var pfpIndex = Int.random(in: 1...17)
     
@@ -33,6 +34,11 @@ class CreateEditProfileViewModel: ObservableObject {
     }
     
     func onSave(context: ModelContext, profile: Profile? ) {
+        if name.isEmpty {
+            displayingAlert = true
+            return
+        }
+        
         if let profile {
             profile.icon = pfpIndex
             profile.name = name
@@ -45,8 +51,9 @@ class CreateEditProfileViewModel: ObservableObject {
         NavigationManager.shared.popView()
     }
     
-    func onDelete(context: ModelContext, profile: Profile ) {
+    func onDelete(context: ModelContext, profile: Profile, homeVM: HomeViewModel) {
         context.delete(profile)
+        homeVM.selectedProfile = nil
         NavigationManager.shared.popView()
     }
 }

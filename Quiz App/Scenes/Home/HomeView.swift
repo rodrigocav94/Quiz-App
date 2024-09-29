@@ -48,10 +48,10 @@ struct HomeView: View, Navigator {
             
             TabView(selection: $vm.selectedProfile) {
                 ForEach(profiles) { profile in
-                    ProfileSelection(profile: profile)
+                    ProfileSelection(homeVM: vm, profile: profile)
                         .tag(profile as Profile?)
                 }
-                ProfileSelection()
+                ProfileSelection(homeVM: vm)
                     .tag(nil as Profile?)
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
