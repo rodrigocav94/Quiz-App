@@ -21,6 +21,28 @@ class QuizViewModel: ObservableObject {
     @Published var displayingAlert = false
     private var cancellables = Set<AnyCancellable>()
     
+    @Published var remainingTime = 300
+    
+    var remainingTimeString: String {
+        let minutes = remainingTime / 60
+        let seconds = remainingTime % 60
+        return String(format: "%d:%02d", minutes, seconds)
+    }
+    
+    private var timer: Timer?
+    
+    func startTimer() { // Activates the timer
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+            guard let self else { return }
+            if remainingTime <= 0 {
+                timer?.invalidate()
+                navigateToFinishView()
+            } else {
+                remainingTime -= 1
+            }
+        })
+    }
+    
     func answer(_ answer: String) {
         selectedOption = answer
         NetworkService.submitAnswer(questionId: currentQuestion.id, answer: answer)
@@ -54,10 +76,14 @@ class QuizViewModel: ObservableObject {
                 selectedOption = nil
                 didAnswerCorrectly = nil
             } else {
-                NavigationManager.shared.pushView {
-                    FinishView(vm: self)
-                }
+                navigateToFinishView()
             }
+        }
+    }
+    
+    func navigateToFinishView() {
+        NavigationManager.shared.pushView {
+            FinishView(vm: self)
         }
     }
     
@@ -67,9 +93,11 @@ class QuizViewModel: ObservableObject {
         didAnswerCorrectly = nil
         questionIndex = 0
         questions = NetworkService.shared.questions.isEmpty ? [.mock] : NetworkService.shared.questions
+        remainingTime = 300
     }
     
     func discardQuestions() {
+        startTimer()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             NetworkService.shared.fetchQuestions()
         }

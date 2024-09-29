@@ -18,7 +18,8 @@ struct QuizView: View {
                         HStack(spacing: 3) {
                             Image(systemName: "clock.fill")
                                 .foregroundStyle(.quizGreen)
-                            Text("5:10")
+                            Text(vm.remainingTimeString)
+                                .frame(width: 34)
                         }
                         .frame(maxHeight: .infinity)
                         .bold()
