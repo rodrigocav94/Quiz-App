@@ -19,7 +19,7 @@ struct QuizView: View {
                             Image(systemName: "clock.fill")
                                 .foregroundStyle(.quizGreen)
                             Text(vm.remainingTimeString)
-                                .frame(width: 34)
+                                .frame(width: 40)
                         }
                         .frame(maxHeight: .infinity)
                         .bold()
@@ -60,22 +60,15 @@ struct QuizView: View {
                 
                 VStack(spacing: 10) {
                     ForEach(Array(vm.currentQuestion.options.enumerated()), id: \.element) { (index, element) in
-                        Text(element)
-                            .font(Font.custom("Kickers-Regular", size: 25))
-                            .multilineTextAlignment(.center)
-                            .minimumScaleFactor(0.6)
-                            .foregroundStyle(getOptionFontColor(element))
-                            .frame(maxWidth: .infinity)
-                            .padding( 15)
-                            .background {
-                                Capsule()
-                                    .fill(getOptionBackgroundColor(element))
-                            }
-                            .onTapGesture {
-                                vm.answer(element)
-                            }
+                        Button {
+                            vm.answer(element)
+                        } label: {
+                            Text(element)
+                        }
+                        .buttonStyle(QuizOptionButtonStyle(answer: element, selectedOption: vm.selectedOption, didAnswerCorrectly: vm.didAnswerCorrectly))
                     }
                 }
+                .disabled(vm.selectedOption != nil)
                 .layoutPriority(1)
                 .transition(.slide.combined(with: .opacity))
                 .id(vm.currentQuestion)
@@ -107,22 +100,6 @@ struct QuizView: View {
         .onAppear {
             vm.discardQuestions()
         }
-    }
-    
-    func getOptionBackgroundColor(_ answer: String) -> Color {
-        guard let selectedOption = vm.selectedOption, let isCorrect = vm.didAnswerCorrectly else {
-            return .quizOffWhite
-        }
-        
-        if answer == selectedOption {
-            return isCorrect ? .quizGreen : .quizOffBlack
-        }
-        
-        return .quizOffWhite
-    }
-    
-    func getOptionFontColor(_ answer: String) -> Color {
-        return answer == vm.selectedOption && vm.didAnswerCorrectly != nil ? .white : .quizOffBlack
     }
 }
 

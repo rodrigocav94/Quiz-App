@@ -35,7 +35,6 @@ class QuizViewModel: ObservableObject {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
             guard let self else { return }
             if remainingTime <= 0 {
-                timer?.invalidate()
                 navigateToFinishView()
             } else {
                 remainingTime -= 1
@@ -82,6 +81,7 @@ class QuizViewModel: ObservableObject {
     }
     
     func navigateToFinishView() {
+        timer?.invalidate()
         NavigationManager.shared.pushView {
             FinishView(vm: self)
         }
