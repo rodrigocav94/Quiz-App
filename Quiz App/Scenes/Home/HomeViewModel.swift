@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 class HomeViewModel: ObservableObject {
+    @Published var selectedProfile: Profile? = nil
     @Published var displayingAlert = false
     
     var didNotLoadYet: Bool {
@@ -19,7 +20,7 @@ class HomeViewModel: ObservableObject {
     }
     
     var cantStartQuiz: Bool {
-        didNotLoadYet && !hasError
+        didNotLoadYet && !hasError || selectedProfile == nil
     }
     
     func tryLoadingAgain() {

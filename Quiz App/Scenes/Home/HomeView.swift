@@ -46,11 +46,13 @@ struct HomeView: View, Navigator {
             }
             .padding(.horizontal, 60)
             
-            TabView {
+            TabView(selection: $vm.selectedProfile) {
                 ForEach(profiles) { profile in
                     ProfileSelection(profile: profile)
+                        .tag(profile as Profile?)
                 }
                 ProfileSelection()
+                    .tag(nil as Profile?)
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
             
@@ -64,7 +66,7 @@ struct HomeView: View, Navigator {
                     }
                 } else {
                     NavigationLink {
-                        QuizView()
+                        QuizView(profile: vm.selectedProfile)
                     } label: {
                         HStack(spacing: 10) {
                             if vm.didNotLoadYet {

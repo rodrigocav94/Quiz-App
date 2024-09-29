@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import MSwiftUINavigator
+import SwiftData
 
 class QuizViewModel: ObservableObject {
     @Published var score = 0
@@ -30,6 +31,9 @@ class QuizViewModel: ObservableObject {
     }
     
     private var timer: Timer?
+    
+    var context: ModelContext?
+    var profile: Profile?
     
     func startTimer() { // Activates the timer
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
@@ -82,6 +86,12 @@ class QuizViewModel: ObservableObject {
     
     func navigateToFinishView() {
         timer?.invalidate()
+        if let context, let profile {
+            if score > profile.maxScore {
+                profile.maxScore = score
+                try? context.save()
+            }
+        }
         NavigationManager.shared.pushView {
             FinishView(vm: self)
         }
@@ -96,7 +106,9 @@ class QuizViewModel: ObservableObject {
         remainingTime = 300
     }
     
-    func discardQuestions() {
+    func discardQuestionsAndUpdateInfo(context: ModelContext?, profile: Profile?) {
+        self.context = context
+        self.profile = profile
         startTimer()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             NetworkService.shared.fetchQuestions()

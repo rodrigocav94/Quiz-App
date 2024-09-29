@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct QuizView: View {
+    @Environment(\.modelContext) var modelContext
+    var profile: Profile?
     @StateObject var vm = QuizViewModel()
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -98,7 +100,7 @@ struct QuizView: View {
             )
         }
         .onAppear {
-            vm.discardQuestions()
+            vm.discardQuestionsAndUpdateInfo(context: modelContext, profile: profile)
         }
     }
 }
