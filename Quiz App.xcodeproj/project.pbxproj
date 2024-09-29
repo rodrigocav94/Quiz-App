@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0A82332CA9CC3300B938C6 /* CreateEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A82322CA9CC3300B938C6 /* CreateEditProfileViewModel.swift */; };
 		9F2FB6DD2CA855BA00A38809 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6DC2CA855B900A38809 /* QuizView.swift */; };
 		9F2FB6DF2CA8631700A38809 /* FinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6DE2CA8631700A38809 /* FinishView.swift */; };
 		9F2FB6E12CA87EF300A38809 /* CircleBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6E02CA87EF300A38809 /* CircleBarButtonStyle.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F0A82322CA9CC3300B938C6 /* CreateEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditProfileViewModel.swift; sourceTree = "<group>"; };
 		9F2FB6DC2CA855B900A38809 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		9F2FB6DE2CA8631700A38809 /* FinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishView.swift; sourceTree = "<group>"; };
 		9F2FB6E02CA87EF300A38809 /* CircleBarButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleBarButtonStyle.swift; sourceTree = "<group>"; };
@@ -108,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F0A82302CA9CBA300B938C6 /* CreateEditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				9F86CEE12CA39C4700D5312F /* CreateEditProfileView.swift */,
+				9F0A82322CA9CC3300B938C6 /* CreateEditProfileViewModel.swift */,
+			);
+			path = CreateEditProfile;
+			sourceTree = "<group>";
+		};
 		9F2FB6E82CA8A2CB00A38809 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,10 +256,10 @@
 		9F86CEE02CA39C1F00D5312F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9F0A82302CA9CBA300B938C6 /* CreateEditProfile */,
 				9F2FB6F52CA8D3F900A38809 /* Finish */,
 				9F2FB6EE2CA8BF7300A38809 /* Quiz */,
 				9F2FB6E82CA8A2CB00A38809 /* Home */,
-				9F86CEE12CA39C4700D5312F /* CreateEditProfileView.swift */,
 				9F2FB6E62CA890D300A38809 /* RankingView.swift */,
 			);
 			path = Scenes;
@@ -404,6 +415,7 @@
 				9F461A092CA2594C0081A070 /* Item.swift in Sources */,
 				9F2FB6ED2CA8AA9E00A38809 /* NetworkService.swift in Sources */,
 				9F461A052CA2594C0081A070 /* Quiz_AppApp.swift in Sources */,
+				9F0A82332CA9CC3300B938C6 /* CreateEditProfileViewModel.swift in Sources */,
 				9F2FB6E12CA87EF300A38809 /* CircleBarButtonStyle.swift in Sources */,
 				9F2FB6E52CA88F3D00A38809 /* ConfettiView.swift in Sources */,
 				9F2FB6F02CA8BF8300A38809 /* QuizViewModel.swift in Sources */,

@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct CreateEditProfileView: View {
-    @State private var pfpIndex = Int.random(in: 1...17)
-    @State private var name = ""
+    @StateObject private var vm = CreateEditProfileViewModel()
+    @Environment(\.modelContext) var modelContext
+    var profile: Profile?
+    private let maxIconIndex = 17
+    private let minIconIndex = 1
     
     var body: some View {
         VStack {
@@ -22,7 +25,7 @@ struct CreateEditProfileView: View {
                 HStack {
                     arrowButton(goesToTheLeft: true)
                     
-                    Image("pfp\(pfpIndex)")
+                    Image("pfp\(vm.pfpIndex)")
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: 220)
@@ -35,13 +38,22 @@ struct CreateEditProfileView: View {
                 )
                 
                 VStack {
-                    TextField("Seu nome", text: $name)
+                    TextField("Seu nome", text: $vm.name)
                         .font(Font.custom("Kickers-Regular", size: 40))
                         .multilineTextAlignment(.center)
                         .lineLimit(0)
                         .frame(maxHeight: .infinity, alignment: .top)
-                    Button("Guardar") {}
+                    Button("Guardar") {
+                        vm.onSave(context: modelContext, profile: profile)
+                    }
+                    .buttonStyle(LargeButtonStyle(color: .quizGreen))
+                    
+                    if let profile {
+                        Button("Remover") {
+                            vm.onDelete(context: modelContext, profile: profile)
+                        }
                         .buttonStyle(LargeButtonStyle(color: .quizPink))
+                    }
                 }
                 .padding()
                 .background(.quizOffWhite)
@@ -52,21 +64,16 @@ struct CreateEditProfileView: View {
         .clipped()
         .background(.quizYellow)
         .navigationBarBackButtonHidden()
+        .onAppear {
+            vm.updateInfo(profile: profile)
+        }
     }
     
     func arrowButton(goesToTheLeft: Bool) -> some View {
-        let shouldBeDisabled = pfpIndex == (goesToTheLeft ? 1 : 17)
+        let shouldBeDisabled = vm.pfpIndex == (goesToTheLeft ? minIconIndex : maxIconIndex)
         
         return Button {
-            if goesToTheLeft {
-                if pfpIndex > 1 {
-                    pfpIndex -= 1
-                }
-            } else {
-                if pfpIndex < 17 {
-                    pfpIndex += 1
-                }
-            }
+            vm.onArrowButton(goesToTheLeft)
         } label: {
             Image(systemName: goesToTheLeft ? "arrowshape.backward.fill" : "arrowshape.right.fill")
                 .font(.largeTitle)

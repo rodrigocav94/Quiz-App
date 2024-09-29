@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct ProfileSelection: View {
-    var name: String?
-    var pfpIndex: Int?
+    var profile: Profile?
     
     var body: some View {
-        NavigationLink(destination: CreateEditProfileView()) {
+        NavigationLink(destination: CreateEditProfileView(profile: profile)) {
             VStack {
-                Image("pfp\(pfpIndex ?? 0)")
+                Image("pfp\(profile?.icon ?? 0)")
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 220)
-                Text(name ?? "Criar")
+                Text(profile?.name ?? "Criar")
                     .font(Font.custom("Kickers-Regular", size: 40))
                     .lineLimit(2)
             }
@@ -32,9 +31,6 @@ struct ProfileSelection: View {
 
 #Preview {
     NavigationStack {
-        ProfileSelection(
-            name: "Rodrigo",
-            pfpIndex: 2
-        )
+        ProfileSelection()
     }
 }

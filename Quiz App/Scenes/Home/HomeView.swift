@@ -8,8 +8,10 @@
 import SwiftUI
 import SwiftData
 import MSwiftUINavigator
+import SwiftData
 
 struct HomeView: View, Navigator {
+    @Query var profiles: [Profile]
     @StateObject var cachedNetworkResults = NetworkService.shared
     @StateObject var vm = HomeViewModel()
     
@@ -45,7 +47,9 @@ struct HomeView: View, Navigator {
             .padding(.horizontal, 60)
             
             TabView {
-                ProfileSelection(name: "Corwin", pfpIndex: 2)
+                ForEach(profiles) { profile in
+                    ProfileSelection(profile: profile)
+                }
                 ProfileSelection()
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
@@ -96,6 +100,6 @@ struct HomeView: View, Navigator {
 #Preview {
     NavigationStack {
         HomeView()
-            .modelContainer(for: Item.self, inMemory: true)
+            .modelContainer(for: Profile.self, inMemory: true)
     }
 }
