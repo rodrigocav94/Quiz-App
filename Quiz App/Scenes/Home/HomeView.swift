@@ -41,6 +41,7 @@ struct HomeView: View, Navigator {
             Group {
                 Text("Quem está por aqui?")
                     .font(Font.custom("Kickers-Regular", size: 55))
+                    .minimumScaleFactor(0.6)
                 Text("Já faz parte da turma ou está criando uma perfil agora?")
                     .foregroundStyle(.secondary)
             }
@@ -54,10 +55,12 @@ struct HomeView: View, Navigator {
                 ProfileSelection(homeVM: vm)
                     .tag(nil as Profile?)
             }
-            .tabViewStyle(.page(indexDisplayMode: .always))
+            .tabViewStyle(.page(indexDisplayMode: .never))
             .onAppear {
                 vm.updateProfileSelection(withQuery: profiles)
             }
+            
+            TabViewIndex(currentIndex: vm.getProfileIndex(profiles: profiles), total:  profiles.count + 1)
             
             Group {
                 if (vm.hasError) && vm.didNotLoadYet {
@@ -90,7 +93,6 @@ struct HomeView: View, Navigator {
         }
         .foregroundStyle(.quizOffBlack)
         .multilineTextAlignment(.center)
-        .padding(.vertical)
         .frame(maxHeight: .infinity)
         .background(
             Color.quizOffWhite

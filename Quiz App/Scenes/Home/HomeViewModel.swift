@@ -36,4 +36,12 @@ class HomeViewModel: ObservableObject {
             $0.id == UserDefaultsManager.lastKnownProfile?.id
         })
     }
+    
+    func getProfileIndex(query profiles: [Profile]) -> Int {
+        if let selectedProfile {
+            return (profiles.firstIndex(of: selectedProfile) ?? 0) + 1
+        }
+        
+        return profiles.count + 1
+    }
 }
