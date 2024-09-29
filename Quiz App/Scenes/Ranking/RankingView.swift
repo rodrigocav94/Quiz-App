@@ -10,7 +10,7 @@ import SwiftData
 
 struct RankingView: View {
     @Query (sort: [
-        SortDescriptor (\Profile.maxScore),
+        SortDescriptor (\Profile.maxScore, order: .reverse),
         SortDescriptor (\Profile.name)
     ]) var profiles: [Profile]
     
@@ -38,14 +38,15 @@ struct RankingView: View {
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
                     } else {
-                        ForEach(profiles) { profile in
+                        ForEach(Array(profiles.enumerated()), id: \.element.id) { (index, profile) in
                             HStack(spacing: 20) {
                                 Image("pfp\(profile.icon)")
                                     .resizable()
                                     .scaledToFit()
-                                Text(profile.name)
+                                Text("\(index + 1). \(profile.name)")
                                     .font(Font.custom("Kickers-Regular", size: 25))
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .lineLimit(1)
                                 
                                 Text("\(profile.maxScore) acertos")
                                     .font(Font.custom("Kickers-Regular", size: 25))
