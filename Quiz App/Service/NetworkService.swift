@@ -13,7 +13,7 @@ class NetworkService: ObservableObject {
     @Published var questions = [Question]()
     @Published var anErrorOccurred = false
     
-    private var cancellables = Set<AnyCancellable>()
+    var cancellables = Set<AnyCancellable>()
     
     func fetchQuestions() {
         // Reset any previous error and show loading state
