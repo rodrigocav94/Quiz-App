@@ -58,7 +58,7 @@ struct FinishView: View {
             }
             .padding(.horizontal, 40)
         }
-        .padding(.bottom)
+        .padding(.vertical)
         .background(
             Color.quizGreen
                 .ignoresSafeArea(.all)
@@ -86,6 +86,8 @@ struct FinishView: View {
                 .foregroundStyle(.quizOffBlack)
             Text(title)
                 .foregroundStyle(.quizOffWhite)
+                .lineLimit(1)
+                .minimumScaleFactor(0.4)
         }
     }
 }
