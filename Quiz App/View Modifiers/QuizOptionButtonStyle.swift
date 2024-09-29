@@ -16,16 +16,17 @@ struct QuizOptionButtonStyle: ButtonStyle {
         configuration.label
             .font(Font.custom("Kickers-Regular", size: 25))
             .multilineTextAlignment(.center)
-            .minimumScaleFactor(0.6)
+            .minimumScaleFactor(0.2)
             .foregroundStyle(getOptionFontColor(answer))
             .frame(maxWidth: .infinity)
-            .padding( 15)
+            .padding(10)
             .background {
                 Capsule()
                     .fill(getOptionBackgroundColor(answer))
             }
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            .layoutPriority(1)
     }
     
     func getOptionBackgroundColor(_ answer: String) -> Color {
