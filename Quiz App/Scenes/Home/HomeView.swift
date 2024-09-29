@@ -55,6 +55,9 @@ struct HomeView: View, Navigator {
                     .tag(nil as Profile?)
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
+            .onAppear {
+                vm.updateProfileSelection(withQuery: profiles)
+            }
             
             Group {
                 if (vm.hasError) && vm.didNotLoadYet {

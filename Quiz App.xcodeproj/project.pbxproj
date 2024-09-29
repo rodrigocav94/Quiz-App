@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9F0A82332CA9CC3300B938C6 /* CreateEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A82322CA9CC3300B938C6 /* CreateEditProfileViewModel.swift */; };
+		9F0A82372CA9D9BE00B938C6 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A82362CA9D9BE00B938C6 /* UserDefaultsManager.swift */; };
+		9F0A823A2CA9DA0000B938C6 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A82392CA9DA0000B938C6 /* UserDefaults+Extensions.swift */; };
+		9F0A823D2CA9DA2200B938C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A823C2CA9DA2200B938C6 /* Constants.swift */; };
 		9F2FB6DD2CA855BA00A38809 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6DC2CA855B900A38809 /* QuizView.swift */; };
 		9F2FB6DF2CA8631700A38809 /* FinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6DE2CA8631700A38809 /* FinishView.swift */; };
 		9F2FB6E12CA87EF300A38809 /* CircleBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2FB6E02CA87EF300A38809 /* CircleBarButtonStyle.swift */; };
@@ -54,6 +57,9 @@
 
 /* Begin PBXFileReference section */
 		9F0A82322CA9CC3300B938C6 /* CreateEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditProfileViewModel.swift; sourceTree = "<group>"; };
+		9F0A82362CA9D9BE00B938C6 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		9F0A82392CA9DA0000B938C6 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		9F0A823C2CA9DA2200B938C6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9F2FB6DC2CA855B900A38809 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		9F2FB6DE2CA8631700A38809 /* FinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishView.swift; sourceTree = "<group>"; };
 		9F2FB6E02CA87EF300A38809 /* CircleBarButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleBarButtonStyle.swift; sourceTree = "<group>"; };
@@ -127,6 +133,30 @@
 			path = Ranking;
 			sourceTree = "<group>";
 		};
+		9F0A82352CA9D9B400B938C6 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9F0A82362CA9D9BE00B938C6 /* UserDefaultsManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		9F0A82382CA9D9F400B938C6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F0A82392CA9DA0000B938C6 /* UserDefaults+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9F0A823B2CA9DA1B00B938C6 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9F0A823C2CA9DA2200B938C6 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		9F2FB6E82CA8A2CB00A38809 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +214,9 @@
 		9F461A032CA2594C0081A070 /* Quiz App */ = {
 			isa = PBXGroup;
 			children = (
+				9F0A823B2CA9DA1B00B938C6 /* Constants */,
+				9F0A82382CA9D9F400B938C6 /* Extensions */,
+				9F0A82352CA9D9B400B938C6 /* Manager */,
 				9F2FB6EB2CA8AA8B00A38809 /* Service */,
 				9F86CED92CA3895900D5312F /* Quiz-App-Info.plist */,
 				9F86CEDD2CA39A3200D5312F /* View Modifiers */,
@@ -411,11 +444,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F86CEE42CA39C5D00D5312F /* BackButton.swift in Sources */,
+				9F0A823D2CA9DA2200B938C6 /* Constants.swift in Sources */,
 				9F2FB6DF2CA8631700A38809 /* FinishView.swift in Sources */,
 				9F461A072CA2594C0081A070 /* HomeView.swift in Sources */,
 				9F2FB6DD2CA855BA00A38809 /* QuizView.swift in Sources */,
+				9F0A823A2CA9DA0000B938C6 /* UserDefaults+Extensions.swift in Sources */,
 				9F2FB6E32CA8847000A38809 /* SpinningLight.swift in Sources */,
 				9F86CEDF2CA39A4A00D5312F /* LargeButtonStyle.swift in Sources */,
+				9F0A82372CA9D9BE00B938C6 /* UserDefaultsManager.swift in Sources */,
 				9F86CEE22CA39C4700D5312F /* CreateEditProfileView.swift in Sources */,
 				9F2FB6E72CA890D300A38809 /* RankingView.swift in Sources */,
 				9F86CED52CA3841800D5312F /* Question.swift in Sources */,
