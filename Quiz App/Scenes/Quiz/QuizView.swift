@@ -16,18 +16,14 @@ struct QuizView: View {
             HStack {
                 BackButton()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay {
+                    .overlay(alignment: .trailing) {
                         HStack(spacing: 3) {
                             Image(systemName: "clock.fill")
                                 .foregroundStyle(.quizGreen)
                             Text(vm.remainingTimeString)
                                 .frame(width: 40)
                         }
-                        .frame(maxHeight: .infinity)
-                        .bold()
-                        .padding(.horizontal, 20)
-                        .overlay(Capsule().stroke(.quizOffWhite, lineWidth: 2))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .capsuleViewStyle(fontColor: .quizOffBlack, borderColor: .quizOffWhite)
                     }
             }
             
@@ -55,7 +51,7 @@ struct QuizView: View {
                 .animation(.default, value: vm.questionIndex)
             }
             
-            VStack(alignment: .leading, spacing: 40) {
+            VStack(alignment: .leading, spacing: 20) {
                 Text(vm.currentQuestion.statement)
                     .font(Font.custom("Kickers-Regular", size: 65))
                     .minimumScaleFactor(0.1)

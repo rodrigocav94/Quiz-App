@@ -18,6 +18,7 @@ struct HomeView: View, Navigator {
     var body: some View {
         NavigationStack {
             contentBody
+                .navigationBarBackButtonHidden()
         }
         .toolbar(.hidden, for: .navigationBar)
         .onAppear {
@@ -30,13 +31,11 @@ struct HomeView: View, Navigator {
                 RankingView()
             } label: {
                 Text("Hall da Fama")
-                    .bold()
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 15)
-                    .overlay(Capsule().stroke(.quizGreen, lineWidth: 1))
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .padding(.horizontal)
+                    .capsuleViewStyle(fontColor: .quizOffBlack, borderColor: .quizGreen)
             }
+            .padding(.trailing)
+            .frame(height: 44)
+            .frame(maxWidth: .infinity, alignment: .trailing)
             
             Group {
                 Text("Quem está por aqui?")
@@ -60,7 +59,7 @@ struct HomeView: View, Navigator {
                 vm.updateProfileSelection(withQuery: profiles)
             }
             
-            TabViewIndex(currentIndex: vm.getProfileIndex(profiles: profiles), total:  profiles.count + 1)
+            TabViewIndex(currentIndex: vm.getProfileIndex(query: profiles), total:  profiles.count + 1)
             
             Group {
                 if (vm.hasError) && vm.didNotLoadYet {

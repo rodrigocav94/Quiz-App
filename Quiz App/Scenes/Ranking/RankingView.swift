@@ -18,7 +18,7 @@ struct RankingView: View {
         VStack {
             BackButton()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+                .padding(.horizontal)
             ScrollView(.vertical) {
                 LazyVStack {
                     Image("ranking-background")
