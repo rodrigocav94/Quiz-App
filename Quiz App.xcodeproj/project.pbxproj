@@ -119,6 +119,14 @@
 			path = CreateEditProfile;
 			sourceTree = "<group>";
 		};
+		9F0A82342CA9D23C00B938C6 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				9F2FB6E62CA890D300A38809 /* RankingView.swift */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
 		9F2FB6E82CA8A2CB00A38809 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,11 +264,11 @@
 		9F86CEE02CA39C1F00D5312F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9F0A82342CA9D23C00B938C6 /* Ranking */,
 				9F0A82302CA9CBA300B938C6 /* CreateEditProfile */,
 				9F2FB6F52CA8D3F900A38809 /* Finish */,
 				9F2FB6EE2CA8BF7300A38809 /* Quiz */,
 				9F2FB6E82CA8A2CB00A38809 /* Home */,
-				9F2FB6E62CA890D300A38809 /* RankingView.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

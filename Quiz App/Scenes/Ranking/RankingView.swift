@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct RankingView: View {
+    @Query (sort: [
+        SortDescriptor (\Profile.maxScore),
+        SortDescriptor (\Profile.name)
+    ]) var profiles: [Profile]
+    
     var body: some View {
         VStack {
             BackButton()
@@ -26,20 +32,29 @@ struct RankingView: View {
                     Text("Descubra quem brilhou no quiz!")
                         .padding(.bottom, 20)
                     
-                    HStack(spacing: 20) {
-                        Image("pfp3")
-                            .resizable()
-                            .scaledToFit()
-                        Text("Rodrigo")
-                            .font(Font.custom("Kickers-Regular", size: 25))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Text("10 acertos")
-                            .font(Font.custom("Kickers-Regular", size: 25))
+                    if profiles.isEmpty {
+                        Text("Cri cri cri... Ainda não temos ninguém no Hall da Fama. Crie um perfil e responda algumas perguntas para ver seu nome por aqui!")
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                    } else {
+                        ForEach(profiles) { profile in
+                            HStack(spacing: 20) {
+                                Image("pfp\(profile.icon)")
+                                    .resizable()
+                                    .scaledToFit()
+                                Text(profile.name)
+                                    .font(Font.custom("Kickers-Regular", size: 25))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                Text("\(profile.maxScore) acertos")
+                                    .font(Font.custom("Kickers-Regular", size: 25))
+                            }
+                            .padding(.trailing)
+                            .frame(height: 50)
+                            .background(Capsule().stroke(.quizOffWhite, lineWidth: 2))
+                        }
                     }
-                    .padding(.trailing)
-                    .frame(height: 50)
-                    .background(Capsule().stroke(.quizOffWhite, lineWidth: 2))
                 }
                 .padding([.horizontal, .bottom])
             }
